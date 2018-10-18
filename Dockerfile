@@ -5,7 +5,6 @@ COPY requirements.txt /requirements.txt
 RUN pip install -r /requirements.txt
 
 COPY server /server
-COPY data /server/data
 COPY config /server/config
 
 WORKDIR /server
