@@ -1,0 +1,4 @@
+data_dir: ./data/files
+database_path: ./data/database.db
+
+template_dir: ./config/templates

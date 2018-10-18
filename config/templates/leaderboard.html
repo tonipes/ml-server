@@ -1,0 +1,31 @@
+<html>
+    <header><title>Leaderboard</title></header>
+    <body>
+        <table border=1 frame=void rules=rows>
+            <thead>
+                <tr>
+                    {% for column in columns %}
+                        {% if column == order_by %}
+                            <th align="left"><a href="?order_by={{column}}&order={{'ASC' if order == 'DESC' else 'DESC'}}&start=0&count={{count}}">{{column}}</a></th>
+                        {% else %}
+                            <th align="left"><a href="?order_by={{column}}&order={{order}}&start=0&count={{count}}">{{column}}</a></th>
+                        {% endif %}
+                        
+                    
+                    {% endfor %}
+                    <th align="left">test_pred_labels</th>
+                    <th align="left">test_pred_probs</th>
+                </tr>
+            </thead>
+            {% for run in runs %}
+            <tr>
+                {% for column in columns %}
+                <td style="padding-right:60px;">{{run[column]}}</td>           
+                {% endfor %}
+                <td style="padding-right:60px;"><a href="/api/run/{{run.run_id}}/files/test_pred_labels">link</a></td>
+                <td style="padding-right:60px;"><a href="/api/run/{{run.run_id}}/files/test_pred_probs">link</a></td>
+            </tr>
+            {% endfor %}
+            </table>
+    </body>
+</html>
